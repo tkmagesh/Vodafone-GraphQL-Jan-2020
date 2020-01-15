@@ -13,6 +13,7 @@ ES6
 12. symbol
 13. string interpolation
 14. classes & inheritence
+15. es6 modules
 
 http://es6-features.org
 
