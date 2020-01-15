@@ -1,0 +1,19 @@
+ES6
+1. let
+2. const
+3. array destructuring
+4. rest operator (array)
+5. spread operator (array)
+6. object destructuring
+7. rest operator (object)
+8. spread operator (object)
+9. object construction 
+10. default arguments
+11. arrow functions
+12. symbol
+13. string interpolation
+14. classes & inheritence
+
+http://es6-features.org
+
+
