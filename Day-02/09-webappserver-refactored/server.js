@@ -5,12 +5,21 @@ const http = require('http'),
     notFoundHandler = require('./notFoundHandler'),
     port = 8080;
 
+const _middlewares = [ dataParser, serveStatic, serveCalculator, notFoundHandler ];
+
+function execMiddlewares(req, res, middlewares){
+    const first = middlewares[0],
+        remaining = middlewares.slice(1),
+        next = function(){
+            execMiddlewares(req, res, remaining);
+        };
+    if (typeof first === 'function')
+        first(req, res, next);
+}
+
 const server = http.createServer((req, res) => {
-    dataParser(req);
-    console.log(req.method + '\t' + req.urlObj.pathname);
-    serveStatic(req, res);
-    serveCalculator(req, res);
-    notFoundHandler(res);
+    execMiddlewares(req, res, _middlewares);
 });
+
 server.listen(port);
 server.on('listening', () => console.log(`Server listening on ${port}..!!`))
