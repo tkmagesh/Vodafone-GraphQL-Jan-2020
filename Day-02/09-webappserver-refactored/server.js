@@ -3,23 +3,15 @@ const http = require('http'),
     serveStatic = require('./serveStatic'),
     serveCalculator = require('./serveCalculator'),
     notFoundHandler = require('./notFoundHandler'),
+    app = require('./app'),
     port = 8080;
 
-const _middlewares = [ dataParser, serveStatic, serveCalculator, notFoundHandler ];
+app.use(dataParser);
+app.use(serveStatic);
+app.use(serveCalculator);
+app.use(notFoundHandler);
 
-function execMiddlewares(req, res, middlewares){
-    const first = middlewares[0],
-        remaining = middlewares.slice(1),
-        next = function(){
-            execMiddlewares(req, res, remaining);
-        };
-    if (typeof first === 'function')
-        first(req, res, next);
-}
-
-const server = http.createServer((req, res) => {
-    execMiddlewares(req, res, _middlewares);
-});
+const server = http.createServer(app);
 
 server.listen(port);
 server.on('listening', () => console.log(`Server listening on ${port}..!!`))
