@@ -1,0 +1,15 @@
+{
+    "users" : [
+        {"id" : 1, "name" : "Magesh", "isActive" : true},
+        {
+            "id": 2,
+            "name": "Suresh",
+            "isActive": false
+        },
+        {
+            "id": 3,
+            "name": "Ganesh",
+            "isActive": true
+        }
+    ]
+}
