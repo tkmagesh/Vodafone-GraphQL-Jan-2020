@@ -1,0 +1,19 @@
+{
+  "name": "graphql-server",
+  "version": "0.1.0",
+  "description": "A sample server for demonstrating graphql",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Magesh K",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "apollo-server": "^2.9.16",
+    "apollo-server-express": "^2.9.16",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "nodemon": "^2.0.2"
+  }
+}
